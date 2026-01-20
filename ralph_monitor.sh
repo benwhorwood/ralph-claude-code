@@ -45,7 +45,7 @@ display_status() {
     
     # Header
     echo -e "${WHITE}╔════════════════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${WHITE}║                           🤖 RALPH MONITOR                              ║${NC}"
+    echo -e "${WHITE}║                     RALPH MONITOR (neb version)                        ║${NC}"
     echo -e "${WHITE}║                        Live Status Dashboard                           ║${NC}"
     echo -e "${WHITE}╚════════════════════════════════════════════════════════════════════════╝${NC}"
     echo
