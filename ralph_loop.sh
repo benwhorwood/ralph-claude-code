@@ -28,8 +28,8 @@ USE_TMUX=false
 
 # Modern Claude CLI configuration (Phase 1.1)
 CLAUDE_OUTPUT_FORMAT="json"              # Options: json, text
-CLAUDE_ALLOWED_TOOLS="Write,Bash(git *),Read"  # Comma-separated list of allowed tools
-CLAUDE_USE_CONTINUE=true                 # Enable session continuity
+CLAUDE_ALLOWED_TOOLS="Write,Bash(git *),Read,Edit,MultiEdit,Glob,Grep,Task,TodoWrite"  # Comma-separated list of allowed tools
+CLAUDE_USE_CONTINUE=false                 # Enable session continuity
 CLAUDE_SESSION_FILE=".claude_session_id" # Session ID persistence file
 CLAUDE_MIN_VERSION="2.0.76"              # Minimum required Claude CLI version
 
