@@ -23,6 +23,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 .temp/
+*.~undo-tree~
 
 # Node modules (if using Node.js projects)
 node_modules/
