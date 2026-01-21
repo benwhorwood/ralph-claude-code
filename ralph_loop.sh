@@ -763,6 +763,10 @@ update_session_last_used() {
 # Global array for Claude command arguments (avoids shell injection)
 declare -a CLAUDE_CMD_ARGS=()
 
+declare -A INCLUDES=(
+  ["PROJECT_CONTEXT.md"]="doc/CONTEXT.md"
+)
+
 # Build Claude CLI command with modern flags using array (shell-injection safe)
 # Populates global CLAUDE_CMD_ARGS array for direct execution
 # Uses -p flag with prompt content (Claude CLI does not have --prompt-file)
@@ -821,7 +825,15 @@ build_claude_command() {
     # Note: Claude CLI uses -p for prompts, not --prompt-file (which doesn't exist)
     # Array-based approach maintains shell injection safety
     local prompt_content
-    prompt_content=$(sed -e '/{{RALPH:doc\/PROJECT_CONTEXT.md}}/{r doc/CONTEXT.md; d}' "$prompt_file")
+    prompt_content=$(cat "$prompt_file")
+
+    for key in "${!INCLUDES[@]}"; do
+      prompt_content=$(sed "/{{RALPH:doc\/$key}}/{
+      r ${INCLUDES[$key]}
+      d
+      }" <<<"$prompt_content")
+    done
+    
     CLAUDE_CMD_ARGS+=("-p" "$prompt_content")
 }
 
