@@ -107,7 +107,7 @@ EOF
 #!/bin/bash
 # Ralph Monitor - Global Command
 
-RALPH_HOME="$HOME/.ralph"
+RALPH_HOME="/home/node/.ralph"
 
 exec "$RALPH_HOME/ralph_monitor.sh" "$@"
 EOF
@@ -117,7 +117,7 @@ EOF
 #!/bin/bash
 # Ralph Project Setup - Global Command
 
-RALPH_HOME="$HOME/.ralph"
+RALPH_HOME="/home/node/.ralph"
 
 exec "$RALPH_HOME/setup.sh" "$@"
 EOF
@@ -127,7 +127,7 @@ EOF
 #!/bin/bash
 # Ralph PRD Import - Global Command
 
-RALPH_HOME="$HOME/.ralph"
+RALPH_HOME="/home/node/.ralph"
 
 exec "$RALPH_HOME/ralph_import.sh" "$@"
 EOF
@@ -178,7 +178,7 @@ install_setup() {
 set -e
 
 PROJECT_NAME=${1:-"my-project"}
-RALPH_HOME="$HOME/.ralph"
+RALPH_HOME="/home/node/.ralph"
 
 echo "🚀 Setting up Ralph project: $PROJECT_NAME"
 
