@@ -821,7 +821,7 @@ build_claude_command() {
     # Note: Claude CLI uses -p for prompts, not --prompt-file (which doesn't exist)
     # Array-based approach maintains shell injection safety
     local prompt_content
-    prompt_content=$(cat "$prompt_file")
+    prompt_content=$(sed -e '/{{RALPH:doc\/PROJECT_CONTEXT.md}}/{r doc/CONTEXT.md; d}' "$prompt_file")
     CLAUDE_CMD_ARGS+=("-p" "$prompt_content")
 }
 
