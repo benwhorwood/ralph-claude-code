@@ -301,7 +301,7 @@ should_halt_execution() {
         echo -e "${YELLOW}Ralph has detected that no progress is being made.${NC}"
         echo ""
         echo -e "${YELLOW}Possible reasons:${NC}"
-        echo "  • Project may be complete (check @fix_plan.md)"
+        echo "  • Project may be complete (check fix_plan.md)"
         echo "  • Claude may be stuck on an error"
         echo "  • PROMPT.md may need clarification"
         echo "  • Manual intervention may be required"
@@ -309,7 +309,7 @@ should_halt_execution() {
         echo -e "${YELLOW}To continue:${NC}"
         echo "  1. Review recent logs: tail -20 logs/ralph.log"
         echo "  2. Check Claude output: ls -lt logs/claude_output_*.log | head -1"
-        echo "  3. Update @fix_plan.md if needed"
+        echo "  3. Update fix_plan.md if needed"
         echo "  4. Reset circuit breaker: ralph --reset-circuit"
         echo ""
         return 0  # Signal to halt
