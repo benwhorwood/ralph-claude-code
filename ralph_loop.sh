@@ -883,6 +883,8 @@ execute_claude_code() {
 
     # Execute Claude Code
     if [[ "$use_modern_cli" == "true" ]]; then
+        echo "${CLAUDE_CMD_ARGS[@]}" > .claude_command_modern_cli
+
         # Modern execution with command array (shell-injection safe)
         # Execute array directly without bash -c to prevent shell metacharacter interpretation
         if timeout ${timeout_seconds}s "${CLAUDE_CMD_ARGS[@]}" > "$output_file" 2>&1 &
@@ -898,6 +900,8 @@ execute_claude_code() {
 
     # Fall back to legacy stdin piping if modern mode failed or not enabled
     if [[ "$use_modern_cli" == "false" ]]; then
+        echo "${CLAUDE_CODE_CMD}" > .claude_command_old_cli
+
         if timeout ${timeout_seconds}s $CLAUDE_CODE_CMD < "$PROMPT_FILE" > "$output_file" 2>&1 &
         then
             :  # Continue to wait loop
